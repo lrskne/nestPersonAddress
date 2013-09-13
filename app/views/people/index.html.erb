@@ -1,7 +1,12 @@
 <h1>People#index</h1>
 <% @people.each do |person| %>
+  <%= person.first_name %>
   <%= person.last_name %>
+  <%= person.phone %>
   <%= person.address.street_address %>
+  <%= person.address.city %>
+  <%= person.address.state %>
+  <%= person.address.zip %>
   <%= link_to "Show", person_path(person), method: :get %>
   <%= link_to "Edit", edit_person_path(person) %>
   <%= link_to "Delete", person_path(person), method: :delete, confirm: "Are you sure?" %>

@@ -1,3 +1,9 @@
 <h1>People#show</h1>
-<%= @person.last_name %>
-<%= @person.address.street_address %>
+<%= @person.first_name %></br>
+<%= @person.last_name %></br>
+<%= @person.address.street_address %></br>
+<%= @person.address.city %></br>
+<%= @person.address.state %></br>
+<%= @person.address.zip %></br>
+
+<%= link_to "Back", people_url %>

@@ -20,11 +20,21 @@ class PeopleController < ApplicationController
   def create
     @person = Person.new(person_params)
     if @person.save
-      redirect_to people_url
+      redirect_to people_url(@person), notice: "Person saved"
     else
-      render "new"
+      render "new", alert: "Person not saved"
     end
   end
+
+  def update
+   if @person.update(person_params)
+      flash.notice = "Person updated."
+    else
+      render action: 'edit', alert: "Person not updated"
+    end
+
+  end
+
 
   def destroy
     @person.destroy
@@ -38,7 +48,8 @@ class PeopleController < ApplicationController
   end
 
   def person_params
-    params.require(:person).permit(:last_name, :address_attributes:[:street_address])
+    params.require(:person).permit(:first_name, :last_name, :phone,
+      address_attributes: [:street_address,  :city, :state, :zip ])
   end
 
 end
